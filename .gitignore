@@ -1,6 +1,12 @@
+# Compiled python
+__pycache__/
+
 # Datasets
 Peliculas_Manu_Select
 Peliculas_New
 
 # Weights
 weights
+
+# Loggin
+*.log

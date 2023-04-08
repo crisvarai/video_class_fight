@@ -25,7 +25,10 @@ if __name__ == "__main__":
     BATCH_SIZE = args.batchsize
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-    df = get_dataframe(args.data_path)
+    try:
+        df = get_dataframe(args.data_path)
+    except FileNotFoundError:
+        logging.error(f"No such file or directory: {args.data_path}")
     dataset = VideoDataset(df)
     train_set, val_set, test_set = torch.utils.data.random_split(dataset, [140, 30, 30], 
                                                                  generator=Generator().manual_seed(42))
